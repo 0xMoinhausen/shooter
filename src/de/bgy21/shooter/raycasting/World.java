@@ -2,6 +2,9 @@ package de.bgy21.shooter.raycasting;
 
 import de.bgy21.shooter.map.Map;
 import org.lwjgl.util.vector.Vector2f;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.state.StateBasedGame;
 
 public class World {
 
@@ -14,5 +17,12 @@ public class World {
 
     public void setMap(Map map) {
         this.map = map;
+    }
+
+    public void update() {
+        
+    }
+    public void render(GameContainer gameContainer, Graphics graphics) {
+
     }
 }
