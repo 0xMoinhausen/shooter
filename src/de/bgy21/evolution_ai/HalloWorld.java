@@ -1,6 +1,11 @@
-package de.bgy21.shooter;
+package de.bgy21.evolution_ai;
+import java.io.IOException;
 import java.util.Random;
 
+import org.knowm.xchart.BitmapEncoder;
+import org.knowm.xchart.QuickChart;
+import org.knowm.xchart.SwingWrapper;
+import org.knowm.xchart.XYChart;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
 
@@ -14,9 +19,24 @@ public class HalloWorld extends BasicGame {
         super("Hallo World");
     }
 
-    public static void main(String[] args) throws SlickException {
+    public static void main(String[] args) throws SlickException, IOException {
         AppGameContainer container = new AppGameContainer(new HalloWorld());
         container.setDisplayMode(800, 600, false);
+
+        double[] xData = new double[] { 0.0, 1.0, 9.0 };
+        double[] yData = new double[] { 2.0, 1.0, 0.0 };
+
+// Create Chart
+        XYChart chart = QuickChart.getChart("Sample Chart", "X", "Y", "y(x)", xData, yData);
+
+// Show it
+        new SwingWrapper(chart).displayChart();
+
+// Save it
+        BitmapEncoder.saveBitmap(chart, "./Sample_Chart", BitmapEncoder.BitmapFormat.PNG);
+
+// or save it in high-res
+        BitmapEncoder.saveBitmapWithDPI(chart, "./Sample_Chart_300_DPI", BitmapEncoder.BitmapFormat.PNG, 300);
         container.start();
     }
 

@@ -1,4 +1,4 @@
-package de.bgy21.shooter;
+package de.bgy21.evolution_ai;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
