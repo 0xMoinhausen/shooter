@@ -19,7 +19,7 @@ public class GameState extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-
+        graphics.fillOval(100, 100, 10,10);
     }
 
     @Override

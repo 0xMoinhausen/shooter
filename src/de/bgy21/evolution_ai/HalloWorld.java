@@ -9,6 +9,7 @@ import org.knowm.xchart.XYChart;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
 
+
 public class HalloWorld extends BasicGame {
 
     private Shape oval;
@@ -16,7 +17,7 @@ public class HalloWorld extends BasicGame {
     private Image image;
 
     public HalloWorld() {
-        super("Hallo World");
+        super("Deine Mutter");
     }
 
     public static void main(String[] args) throws SlickException, IOException {

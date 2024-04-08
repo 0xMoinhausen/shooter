@@ -12,5 +12,7 @@ public class Main {
         screen = new AppGameContainer(new Game());
         screen.setDisplayMode(600, 400, false);
         screen.start();
+
+
     }
 }
