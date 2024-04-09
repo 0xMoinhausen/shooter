@@ -9,7 +9,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class MainMenuState extends BasicGameState {
     @Override
     public int getID() {
-        return 0;
+        return 2;
     }
 
     @Override
