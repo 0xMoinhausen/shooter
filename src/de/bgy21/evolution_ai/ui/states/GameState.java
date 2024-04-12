@@ -18,8 +18,10 @@ public class GameState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        grid = new Grid(container.getHeight(), container.getWidth(), 9000, 9000);
         super.enter(container, game);
-        grid.addGridObject(10, 10, new Block(10, 10, 10, 10));
+
+        grid.addGridObject(new Block(10, 10, 10, 10));
 
     }
 
@@ -30,11 +32,11 @@ public class GameState extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        graphics.fillOval(100, 100, 10,10);
+        grid.render(graphics);
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-
+        grid.update();
     }
 }

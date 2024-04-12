@@ -17,5 +17,5 @@ abstract public class GridObject {
         this.collision = collision;
     }
 
-    abstract public void render(Graphics graphics);
+    abstract public void render(Graphics graphics, float scaleMultX, float scaleMultY);
 }

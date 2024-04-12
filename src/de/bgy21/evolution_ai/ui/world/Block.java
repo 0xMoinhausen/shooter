@@ -10,8 +10,9 @@ public class Block extends GridObject{
         super(posX, posY, size_x, size_y, true);
     }
 
+
     @Override
-    public void render(Graphics graphics) {
-        graphics.draw(new Rectangle(this.posX, this.posY, 10, 10));
+    public void render(Graphics graphics, float scaleMultX, float scaleMultY) {
+        graphics.fill(new Rectangle(this.posX * scaleMultX, this.posY * scaleMultY, size_x * scaleMultX, size_y * scaleMultY));
     }
 }
