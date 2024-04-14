@@ -18,7 +18,7 @@ public class GameState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        grid = new Grid(container.getHeight(), container.getWidth(), 9000, 9000);
+        grid = new Grid(container.getHeight(), container.getWidth(), 90, 90);
         super.enter(container, game);
 
         grid.addGridObject(new Block(10, 10, 10, 10));
