@@ -38,5 +38,9 @@ public class GameState extends BasicGameState {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         grid.update();
+        Input input = gameContainer.getInput();
+        if(input.isKeyPressed(Input.KEY_ESCAPE)){
+            gameContainer.exit();
+        }
     }
 }
