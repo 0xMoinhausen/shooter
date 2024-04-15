@@ -10,7 +10,7 @@ public class Main {
         // initially the container is set to null.We will add properties later
         AppGameContainer screen = null;
         screen = new AppGameContainer(new Game());
-        screen.setDisplayMode(600, 400, false);
+        screen.setDisplayMode(1920, 1080, true);
         screen.start();
 
 

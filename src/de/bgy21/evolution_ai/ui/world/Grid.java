@@ -44,7 +44,7 @@ public class Grid {
 
     public void update(){
         tick++;
-        if(tick % 1000 == 0){
+        if(tick % 250 == 0){
             reset(20);
         }
     }

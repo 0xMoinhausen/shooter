@@ -3,7 +3,7 @@ package de.bgy21.evolution_ai.ui.world;
 import java.util.*;
 
 public class MazeGenerator {
-
+    static Random random = new Random();
     public static boolean[][] generateMaze(int width, int height) {
         boolean[][] maze = new boolean[height][width];
         // Initialize maze with walls
@@ -14,12 +14,20 @@ public class MazeGenerator {
         }
 
         // Choose random starting point
-        Random random = new Random();
+
         int startX = random.nextInt(width);
         int startY = random.nextInt(height);
 
+        switch(random.nextInt(2)){
+            case 0:
+                generatePath(startX, startY, maze, width, height);
+                break;
+            case 1:
+                generateRandom(startX, startY, maze, width, height);
+
+        }
         // Generate the maze starting from the random point
-        generatePath(startX, startY, maze, width, height);
+
 
         return maze;
     }
@@ -44,4 +52,13 @@ public class MazeGenerator {
             }
         }
     }
+    private static void generateRandom(int xSavePoint, int ySavePoint, boolean[][] maze, int width, int height){
+        maze[xSavePoint][ySavePoint] = false;
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                maze[x][y] = random.nextBoolean();
+            }
+        }
+    }
 }
+
