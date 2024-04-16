@@ -12,6 +12,7 @@ import java.util.Random;
 
 public class BallState extends BasicGameState {
 
+    public static int ID = 0;
     public ArrayList<Shape> balls = new ArrayList<>();
     public Shape player;
     private int playerSize = 10;
@@ -25,7 +26,7 @@ public class BallState extends BasicGameState {
 
     @Override
     public int getID() {
-        return 0;
+        return ID;
     }
 
     @Override
