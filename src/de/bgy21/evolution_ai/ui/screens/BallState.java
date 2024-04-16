@@ -1,6 +1,5 @@
-package de.bgy21.evolution_ai.ui.states;
+package de.bgy21.evolution_ai.ui.screens;
 
-import org.knowm.xchart.style.markers.Oval;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.*;
 import org.newdawn.slick.state.BasicGameState;

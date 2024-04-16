@@ -1,7 +1,7 @@
 package de.bgy21.evolution_ai;
-import de.bgy21.evolution_ai.ui.states.BallState;
-import de.bgy21.evolution_ai.ui.states.GameState;
-import de.bgy21.evolution_ai.ui.states.MainMenuState;
+import de.bgy21.evolution_ai.ui.screens.BallState;
+import de.bgy21.evolution_ai.ui.screens.GameState;
+import de.bgy21.evolution_ai.ui.screens.MainMenuState;
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;

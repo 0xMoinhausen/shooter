@@ -1,29 +1,27 @@
-package de.bgy21.evolution_ai.ui.states;
+package de.bgy21.evolution_ai.ui.screens;
 
-import de.bgy21.evolution_ai.ui.world.Block;
-import de.bgy21.evolution_ai.ui.world.Grid;
+import de.bgy21.evolution_ai.ui.badwidgets.Button;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class GameState extends BasicGameState {
+public class MainMenuState extends BasicGameState {
 
-    public Grid grid;
+    Button<Rectangle> ballStateButton;
+
     @Override
     public int getID() {
-        return 1;
+        return 2;
     }
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        grid = new Grid(container.getHeight(), container.getWidth(), 90, 90);
         super.enter(container, game);
-
-        grid.addGridObject(new Block(10, 10, 10, 10));
-
+        ballStateButton = new Button<>(new Rectangle(100, 100, 400, 90), Color.cyan, "Ball Game");
     }
 
     @Override
@@ -33,15 +31,11 @@ public class GameState extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        grid.render(graphics);
+        ballStateButton.render(gameContainer, graphics);
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-        grid.update();
-        Input input = gameContainer.getInput();
-        if(input.isKeyPressed(Input.KEY_ESCAPE)){
-            gameContainer.exit();
-        }
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
+        ballStateButton.update(gameContainer, () -> stateBasedGame.enterState(BallState.ID));
     }
 }

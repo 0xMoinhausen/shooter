@@ -1,27 +1,29 @@
-package de.bgy21.evolution_ai.ui.states;
+package de.bgy21.evolution_ai.ui.screens;
 
-import de.bgy21.evolution_ai.ui.badwidgets.Button;
-import org.newdawn.slick.Color;
+import de.bgy21.evolution_ai.ui.world.Block;
+import de.bgy21.evolution_ai.ui.world.Grid;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class MainMenuState extends BasicGameState {
+public class GameState extends BasicGameState {
 
-    Button<Rectangle> ballStateButton;
-
+    public Grid grid;
     @Override
     public int getID() {
-        return 2;
+        return 1;
     }
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        grid = new Grid(container.getHeight(), container.getWidth(), 90, 90);
         super.enter(container, game);
-        ballStateButton = new Button<>(new Rectangle(100, 100, 400, 90), Color.cyan, "Ball Game");
+
+        grid.addGridObject(new Block(10, 10, 10, 10));
+
     }
 
     @Override
@@ -31,11 +33,15 @@ public class MainMenuState extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        ballStateButton.render(gameContainer, graphics);
+        grid.render(graphics);
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
-        ballStateButton.update(gameContainer, () -> stateBasedGame.enterState(BallState.ID));
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+        grid.update();
+        Input input = gameContainer.getInput();
+        if(input.isKeyPressed(Input.KEY_ESCAPE)){
+            gameContainer.exit();
+        }
     }
 }
