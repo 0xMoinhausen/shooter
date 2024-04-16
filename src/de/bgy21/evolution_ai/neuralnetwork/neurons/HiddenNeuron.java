@@ -1,13 +1,13 @@
 package de.bgy21.evolution_ai.neuralnetwork.neurons;
 
-import de.bgy21.evolution_ai.neuralnetwork.ActivationFunction;
+import de.bgy21.evolution_ai.activation_functions.ActivationFunction;
 
 import java.util.ArrayList;
 
 public class HiddenNeuron implements Neuron {
 
-    private ArrayList<Connection> connections;
-    private ActivationFunction activationFunction;
+    private final ArrayList<Connection> connections;
+    private final ActivationFunction activationFunction;
 
     public HiddenNeuron(ArrayList<Connection> connections, ActivationFunction activationFunction) {
         this.connections = connections;
