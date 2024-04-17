@@ -8,9 +8,11 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class GameScreen extends BasicGameState {
 
+    public static int ID = 4;
+
     @Override
     public int getID() {
-        return 0;
+        return ID;
     }
 
     @Override
