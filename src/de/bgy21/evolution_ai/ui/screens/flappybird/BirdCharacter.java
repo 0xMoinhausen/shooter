@@ -1,8 +1,13 @@
 package de.bgy21.evolution_ai.ui.screens.flappybird;
 
+import de.bgy21.evolution_ai.activation_functions.Sigmoid;
+import de.bgy21.evolution_ai.neuralnetwork.NeuralNetwork;
+import de.bgy21.evolution_ai.neuralnetwork.layer.InputLayer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Shape;
+
+import java.util.Random;
 
 public class BirdCharacter {
 
@@ -20,16 +25,18 @@ public class BirdCharacter {
 
     private int posX, posY;
     private float speedY;
+    private NeuralNetwork neuralNetwork;
     public boolean isDead = false;
     Shape birdHitbox = new Circle(0, 0, birdSprite.getHeight()/ 2);
 
     final KeyListener birdInput = new BirdInput();
 
-    public BirdCharacter(Input input){
+    public BirdCharacter(Input input, NeuralNetwork neuralNetwork){
         posX = 200;
         posY = 100;
         speedY = 0;
         input.addKeyListener(birdInput);
+        this.neuralNetwork = neuralNetwork;
     }
 
     public void render(Graphics graphics){
@@ -43,6 +50,10 @@ public class BirdCharacter {
         speedY += gravity * delta;
         posY += speedY;
         birdHitbox.setLocation(posX, posY);
+        neuralNetwork.inputLayer.getNeuron(0).setValue(posY);
+        if (neuralNetwork.lastLayer().getNeuron(0).getValue() >= 0.5) {
+            jump();
+        }
     }
 
     public void jump(){

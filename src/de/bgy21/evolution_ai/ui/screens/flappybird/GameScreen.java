@@ -9,11 +9,14 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.util.Random;
+
 public class GameScreen extends BasicGameState {
 
     public static float speedMult = 1;
     public static int ID = 4;
     private FlappyBirdInstance flappyBirdGame;
+    private Random random = new Random(64);
 
     @Override
     public int getID() {
@@ -22,7 +25,7 @@ public class GameScreen extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        flappyBirdGame = new FlappyBirdInstance(container,1, 1);
+        flappyBirdGame = new FlappyBirdInstance(container,50, 1, random);
     }
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {

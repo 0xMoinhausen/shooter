@@ -11,7 +11,7 @@ public abstract class Layer<T extends Neuron> {
         this.neurons = neurons;
     }
 
-    private ArrayList<T> neurons;
+    protected ArrayList<T> neurons;
 
     public T getNeuron(int index) {
         return neurons.get(index);

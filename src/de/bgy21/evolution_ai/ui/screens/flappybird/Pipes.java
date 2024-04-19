@@ -25,9 +25,9 @@ public class Pipes {
     public Pipes(){
         posX = 400;
         gapY = 100;
-        gapSize = 110;
+        gapSize = 120;
         speedX = 10f;
-        pipeMoveSpeed = 0.05f;
+        pipeMoveSpeed = 0.09f;
         topHitbox = new Rectangle(posX, gapY - gapSize/2, pipeSprite.getWidth(), -pipeSprite.getHeight());
         bottomHitbox = new Rectangle(posX, gapY + gapSize/2, pipeSprite.getWidth(), pipeSprite.getHeight());
     }

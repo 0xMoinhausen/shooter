@@ -18,6 +18,7 @@ public class NeuralNetwork {
 
     public NeuralNetwork(InputLayer inputLayer) {
         this.inputLayer = inputLayer;
+        this.hiddenLayers = new ArrayList<>();
     }
 
     public void add_hidden_layer(int size, ArrayList<Double> weights, ActivationFunction activationFunction) {
@@ -34,12 +35,16 @@ public class NeuralNetwork {
         for (int i = 0; i < size; i++) {
             ArrayList<Connection> connections = new ArrayList<>(size * lastLayer.size());
             for (int j = 0; j < lastLayer.size(); j++) {
-                connections.add(new Connection(lastLayer.getNeuron(j), weights.get(i * size + j)));
+                connections.add(new Connection(lastLayer.getNeuron(j), weights.get(i * lastLayer.size() + j)));
             }
             HiddenNeuron neuron = new HiddenNeuron(connections, activationFunction);
             neurons.add(neuron);
         }
         hiddenLayers.add(new HiddenLayer(neurons));
+    }
+
+    public HiddenLayer lastLayer() {
+        return this.hiddenLayers.get(hiddenLayers.size() - 1);
     }
 
     public NeuralNetwork clone(double mutateRate, Random random) throws CloneNotSupportedException {
@@ -55,5 +60,13 @@ public class NeuralNetwork {
             }
         }
         return neuralNetwork;
+    }
+
+    public static ArrayList<Double> randomWeights(int amount, Random random) {
+        ArrayList weights = new ArrayList();
+        for (int i = 0; i < amount; i++) {
+            weights.add(random.nextDouble() - 0.5);
+        }
+        return weights;
     }
 }
