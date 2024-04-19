@@ -1,13 +1,7 @@
 package de.bgy21.evolution_ai.ui.badwidgets;
 
-import org.lwjgl.Sys;
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
-import org.newdawn.slick.geom.Vector2f;
-import org.newdawn.slick.state.StateBasedGame;
-
-import java.io.IOException;
 
 public class Button<T extends Shape> {
     private T shape;
@@ -25,11 +19,6 @@ public class Button<T extends Shape> {
 
     public void update(GameContainer gameContainer, Runnable action) {
         Input input = gameContainer.getInput();
-        //System.out.println("\033\143");
-        //System.out.println("Maus:" +  input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON));
-        //System.out.println("input mouse:" +  input.getMouseX());
-        //System.out.println("input mouse:" +  input.getMouseY());
-        //System.out.println("contains: " +  shape.contains(input.getMouseX(), input.getMouseY()));
 
         if (input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON) && shape.contains(input.getMouseX(), input.getMouseY())) {
             action.run();
@@ -41,9 +30,12 @@ public class Button<T extends Shape> {
         Color lastColor = graphics.getColor();
         graphics.setColor(this.color);
         graphics.fill(shape);
+        graphics.setColor(Color.white);
+        graphics.drawString(this.content, shape.getX(), shape.getY());
+        graphics.setColor(lastColor);
     }
 
-    class ButtonListener implements MouseListener{
+    class ButtonListener implements MouseListener {
 
         @Override
         public void mouseWheelMoved(int i) {
@@ -91,7 +83,6 @@ public class Button<T extends Shape> {
 
         @Override
         public void inputEnded() {
-
         }
 
         @Override

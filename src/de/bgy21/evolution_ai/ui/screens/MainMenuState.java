@@ -55,4 +55,10 @@ public class MainMenuState extends BasicGameState {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
     }
+
+    @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+        super.leave(container, game);
+        container.getInput().removeAllListeners();
+    }
 }
