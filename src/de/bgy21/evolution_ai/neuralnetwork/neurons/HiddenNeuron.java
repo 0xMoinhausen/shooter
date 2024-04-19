@@ -22,4 +22,8 @@ public class HiddenNeuron implements Neuron {
         }
         return activationFunction.get_value(value);
     }
+
+    public ArrayList<Connection> getConnections() {
+        return connections;
+    }
 }

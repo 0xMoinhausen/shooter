@@ -13,7 +13,7 @@ public abstract class Layer<T extends Neuron> {
 
     private ArrayList<T> neurons;
 
-    public Neuron getNeuron(int index) {
+    public T getNeuron(int index) {
         return neurons.get(index);
     }
 
