@@ -11,22 +11,18 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class GameScreen extends BasicGameState {
 
+    public static float speedMult = 1;
     public static int ID = 4;
-    private static int flappyBirdInstancesAmount = 1;
-    private FlappyBirdInstance[] flappyBirdInstances = new FlappyBirdInstance[flappyBirdInstancesAmount];
+    private FlappyBirdInstance flappyBirdGame;
 
     @Override
     public int getID() {
         return ID;
     }
 
-
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        for (FlappyBirdInstance flappyBirdInstance : flappyBirdInstances) {
-            flappyBirdInstance = new FlappyBirdInstance();
-        }
-
+        flappyBirdGame = new FlappyBirdInstance(container,1, 1);
     }
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -35,12 +31,14 @@ public class GameScreen extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-
+        flappyBirdGame.render();
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException {
+        delta *= speedMult;
         Input input = gameContainer.getInput();
+        flappyBirdGame.update(delta);
         if(input.isKeyPressed(Input.KEY_ESCAPE)){
             gameContainer.exit();
         }
