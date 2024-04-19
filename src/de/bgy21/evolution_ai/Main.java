@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws SlickException{
 
         AppGameContainer screen = new AppGameContainer(new Game());
-        int displayWidth = screen.getScreenWidth(),displayHeight = screen.getScreenHeight();
+        int displayWidth = screen.getScreenWidth() / 2,displayHeight = screen.getScreenHeight() / 2;
         screen.setDisplayMode(displayWidth, displayHeight, false);
         screen.start();
 
