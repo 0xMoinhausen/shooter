@@ -23,19 +23,19 @@ public class BirdCharacter {
         }
     }
 
-    private int posX, posY;
+    public int posX, posY;
     private float speedY;
     private NeuralNetwork neuralNetwork;
     public boolean isDead = false;
     Shape birdHitbox = new Circle(0, 0, birdSprite.getHeight()/ 2);
 
-    final KeyListener birdInput = new BirdInput();
+    //final KeyListener birdInput = new BirdInput();
 
-    public BirdCharacter(Input input, NeuralNetwork neuralNetwork){
+    public BirdCharacter(NeuralNetwork neuralNetwork){
         posX = 200;
         posY = 100;
         speedY = 0;
-        input.addKeyListener(birdInput);
+        //input.addKeyListener(birdInput);
         this.neuralNetwork = neuralNetwork;
     }
 
@@ -62,8 +62,14 @@ public class BirdCharacter {
 
     public void killBird(Input input){
         this.isDead = true;
-        input.removeKeyListener(birdInput);
+        //input.removeKeyListener(birdInput);
     }
+
+    public BirdCharacter clone(Random random, double mutateRate) throws CloneNotSupportedException {
+        BirdCharacter bird = new BirdCharacter(this.neuralNetwork.clone(mutateRate, random));
+        return bird;
+    }
+
 
     class BirdInput implements KeyListener{
 

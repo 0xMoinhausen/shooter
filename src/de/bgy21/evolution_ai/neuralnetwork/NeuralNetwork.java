@@ -48,7 +48,7 @@ public class NeuralNetwork {
     }
 
     public NeuralNetwork clone(double mutateRate, Random random) throws CloneNotSupportedException {
-        NeuralNetwork neuralNetwork = (NeuralNetwork) this.clone();
+        NeuralNetwork neuralNetwork = this.clone();
 
         for (HiddenLayer layer: neuralNetwork.hiddenLayers) {
             for (int i = 0; i < layer.size(); i++) {

@@ -9,6 +9,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GameScreen extends BasicGameState {
@@ -16,7 +17,7 @@ public class GameScreen extends BasicGameState {
     public static float speedMult = 1;
     public static int ID = 4;
     private FlappyBirdInstance flappyBirdGame;
-    private Random random = new Random(64);
+    private Random random = new Random();
 
     @Override
     public int getID() {
@@ -25,6 +26,7 @@ public class GameScreen extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        // Bird amount muss mal 0.8 und mal 0.2 eine gerade zahl rauskommen weil ich nicht coden kann
         flappyBirdGame = new FlappyBirdInstance(container,50, 1, random);
     }
     @Override
@@ -42,6 +44,21 @@ public class GameScreen extends BasicGameState {
         delta *= speedMult;
         Input input = gameContainer.getInput();
         flappyBirdGame.update(delta);
+        if (flappyBirdGame.birds.isEmpty()) {
+            ArrayList<BirdCharacter> deathBirds = this.flappyBirdGame.deathBirds;
+            ArrayList<BirdCharacter> birds = new ArrayList<>(deathBirds.size());
+            for (int j = 0; j < 5; j++) {
+                for (int i = (int) (deathBirds.size() * 0.8) - 1; i < deathBirds.size(); i++) {
+                    try {
+                        birds.add(deathBirds.get(i).clone(this.random, 0.15));
+                    } catch (CloneNotSupportedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+            this.flappyBirdGame = new FlappyBirdInstance(gameContainer, 1,birds);
+        }
+        System.out.println("Flappys: " + flappyBirdGame.birds.size());
         if(input.isKeyPressed(Input.KEY_ESCAPE)){
             gameContainer.exit();
         }
