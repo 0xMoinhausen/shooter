@@ -3,6 +3,7 @@ package de.bgy21.evolution_ai.ui.screens.flappybird;
 
 import de.bgy21.evolution_ai.activation_functions.Linear;
 import de.bgy21.evolution_ai.activation_functions.Sigmoid;
+import de.bgy21.evolution_ai.activation_functions.TanH;
 import de.bgy21.evolution_ai.neuralnetwork.NeuralNetwork;
 import de.bgy21.evolution_ai.neuralnetwork.layer.InputLayer;
 import org.lwjgl.Sys;
@@ -34,8 +35,8 @@ public class FlappyBirdInstance {
         this.birds = new ArrayList<>();
         for (int i = 0; i < birdAmount; i++) {
             NeuralNetwork neuralNetwork = new NeuralNetwork(new InputLayer(1));
-            neuralNetwork.add_hidden_layer(5, NeuralNetwork.randomWeights( 5, random), new Linear());
-            neuralNetwork.add_hidden_layer(1, NeuralNetwork.randomWeights( 5, random), new Sigmoid());
+            neuralNetwork.add_hidden_layer(3, NeuralNetwork.randomWeights( 3, random), new TanH());
+            neuralNetwork.add_hidden_layer(1, NeuralNetwork.randomWeights( 3, random), new Sigmoid());
             birds.add(new BirdCharacter(neuralNetwork));
             System.out.println("Created Bird!");
         }
@@ -69,7 +70,7 @@ public class FlappyBirdInstance {
     public void update(int delta) {
         for (int i = 0; i < this.birds.size(); i++) {
             BirdCharacter bird = this.birds.get(i);
-            bird.update(delta);
+            bird.update(delta, container);
             if (bird.posY < 0 || bird.posY > container.getHeight()) {
                 bird.killBird(container.getInput());
                 this.deathBirds.add(bird);

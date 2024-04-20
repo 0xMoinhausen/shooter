@@ -69,7 +69,7 @@ public class NeuralNetwork implements Cloneable {
             for (int i = 0; i < layer.size(); i++) {
                 for (Connection connection: layer.getNeuron(i).getConnections()) {
                     if (random.nextDouble() <= mutateRate ) {
-                        connection.setWeight(connection.getWeight() + random.nextDouble() - 0.5);
+                        connection.setWeight(connection.getWeight() + (random.nextDouble() - 0.5) * 0.10);
                     }
                 }
             }

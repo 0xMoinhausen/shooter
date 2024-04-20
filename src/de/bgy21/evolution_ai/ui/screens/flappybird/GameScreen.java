@@ -17,7 +17,8 @@ public class GameScreen extends BasicGameState {
     public static float speedMult = 1;
     public static int ID = 4;
     private FlappyBirdInstance flappyBirdGame;
-    private Random random = new Random(64);
+    private Random random = new Random(65);
+    private int generation = 1;
 
     @Override
     public int getID() {
@@ -27,7 +28,7 @@ public class GameScreen extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         // Bird amount muss mal 0.8 und mal 0.2 eine gerade zahl rauskommen weil ich nicht coden kann
-        flappyBirdGame = new FlappyBirdInstance(container,50, 1, random);
+        flappyBirdGame = new FlappyBirdInstance(container,400, 1, random);
     }
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -37,6 +38,8 @@ public class GameScreen extends BasicGameState {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         flappyBirdGame.render();
+        String generationText = "Generation: " + generation;
+        graphics.drawString(generationText, 10, 20);
     }
 
     @Override
@@ -51,12 +54,13 @@ public class GameScreen extends BasicGameState {
                 for (int i = (int) (deathBirds.size() * 0.8) ; i < deathBirds.size(); i++) {
                     System.out.println(i);
                     try {
-                        birds.add(deathBirds.get(i).clone(this.random, 0.4));
+                        birds.add(deathBirds.get(i).clone(this.random, 0));
                     } catch (CloneNotSupportedException e) {
                         throw new RuntimeException(e);
                     }
                 }
             }
+            generation += 1;
             this.flappyBirdGame = new FlappyBirdInstance(gameContainer, 1,birds);
         }
         System.out.println("Flappys: " + flappyBirdGame.birds.size());
