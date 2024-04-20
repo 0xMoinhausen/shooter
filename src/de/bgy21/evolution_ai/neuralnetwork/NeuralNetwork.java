@@ -12,13 +12,18 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class NeuralNetwork {
+public class NeuralNetwork implements Cloneable {
     public InputLayer inputLayer;
     private ArrayList<HiddenLayer> hiddenLayers;
 
     public NeuralNetwork(InputLayer inputLayer) {
         this.inputLayer = inputLayer;
         this.hiddenLayers = new ArrayList<>();
+    }
+
+    public NeuralNetwork(InputLayer inputLayer, ArrayList<HiddenLayer> hiddenLayers) {
+        this.inputLayer = inputLayer;
+        this.hiddenLayers = hiddenLayers;
     }
 
     public void add_hidden_layer(int size, ArrayList<Double> weights, ActivationFunction activationFunction) {
@@ -47,8 +52,18 @@ public class NeuralNetwork {
         return this.hiddenLayers.get(hiddenLayers.size() - 1);
     }
 
+    public NeuralNetwork copy() {
+        InputLayer inputLayer = this.inputLayer.copy();
+        ArrayList<HiddenLayer> hiddenLayers = new ArrayList<>();
+
+        for (HiddenLayer hiddenLayer: this.hiddenLayers) {
+            hiddenLayers.add(hiddenLayer.copy());
+        }
+        return new NeuralNetwork(inputLayer, hiddenLayers);
+    }
+
     public NeuralNetwork clone(double mutateRate, Random random) throws CloneNotSupportedException {
-        NeuralNetwork neuralNetwork = this.clone();
+        NeuralNetwork neuralNetwork = this.copy();
 
         for (HiddenLayer layer: neuralNetwork.hiddenLayers) {
             for (int i = 0; i < layer.size(); i++) {

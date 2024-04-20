@@ -23,6 +23,15 @@ public class HiddenNeuron implements Neuron {
         return activationFunction.get_value(value);
     }
 
+    @Override
+    public HiddenNeuron copy() {
+        ArrayList<Connection> connections= new ArrayList<>();
+        for (Connection connection: this.connections) {
+            connections.add(connection.copy());
+        }
+        return new HiddenNeuron(connections, activationFunction);
+    }
+
     public ArrayList<Connection> getConnections() {
         return connections;
     }

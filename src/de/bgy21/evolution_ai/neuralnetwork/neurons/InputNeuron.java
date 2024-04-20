@@ -20,4 +20,9 @@ public class InputNeuron implements Neuron {
         return value;
     }
 
+    @Override
+    public InputNeuron copy() {
+        return new InputNeuron(value);
+    }
+
 }

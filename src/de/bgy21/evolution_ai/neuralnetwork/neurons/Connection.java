@@ -24,4 +24,8 @@ public class Connection {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    public Connection copy() {
+        return new Connection(neuron.copy(), weight);
+    }
 }

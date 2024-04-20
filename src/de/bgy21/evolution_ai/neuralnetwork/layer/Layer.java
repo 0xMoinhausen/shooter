@@ -20,4 +20,6 @@ public abstract class Layer<T extends Neuron> {
     public int size() {
         return neurons.size();
     }
+
+    public abstract Layer copy();
 }

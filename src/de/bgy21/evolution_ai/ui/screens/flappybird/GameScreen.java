@@ -17,7 +17,7 @@ public class GameScreen extends BasicGameState {
     public static float speedMult = 1;
     public static int ID = 4;
     private FlappyBirdInstance flappyBirdGame;
-    private Random random = new Random();
+    private Random random = new Random(64);
 
     @Override
     public int getID() {
@@ -48,9 +48,10 @@ public class GameScreen extends BasicGameState {
             ArrayList<BirdCharacter> deathBirds = this.flappyBirdGame.deathBirds;
             ArrayList<BirdCharacter> birds = new ArrayList<>(deathBirds.size());
             for (int j = 0; j < 5; j++) {
-                for (int i = (int) (deathBirds.size() * 0.8) - 1; i < deathBirds.size(); i++) {
+                for (int i = (int) (deathBirds.size() * 0.8) ; i < deathBirds.size(); i++) {
+                    System.out.println(i);
                     try {
-                        birds.add(deathBirds.get(i).clone(this.random, 0.15));
+                        birds.add(deathBirds.get(i).clone(this.random, 0.4));
                     } catch (CloneNotSupportedException e) {
                         throw new RuntimeException(e);
                     }
