@@ -7,9 +7,11 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 
+import java.util.Random;
+
 public class Pipes {
     static Image pipeSprite;
-
+    static Random random = new Random();
     static {
         try {
             pipeSprite = new Image("assets/flappybird/sprites/pipe-red.png").getScaledCopy(1.5f);
@@ -22,10 +24,10 @@ public class Pipes {
     private float speedX, pipeMoveSpeed;
     private Shape bottomHitbox, topHitbox;
 
-    public Pipes(){
-        posX = 400;
-        gapY = 100;
-        gapSize = 120;
+    public Pipes(int posXOffset){
+        this.posX = 500 + posXOffset;
+        gapY = random.nextInt(Display.getHeight() - gapSize) + gapSize / 2;
+        gapSize = 130;
         speedX = 10f;
         pipeMoveSpeed = 0.09f;
         topHitbox = new Rectangle(posX, gapY - gapSize/2, pipeSprite.getWidth(), -pipeSprite.getHeight());
@@ -47,6 +49,7 @@ public class Pipes {
         posX -= speedX;
         if(posX <= 0){
             posX = Display.getWidth();
+            gapY = random.nextInt(Display.getHeight() - gapSize) + gapSize / 2;
         }
         topHitbox.setLocation(posX, gapY - gapSize/2);
         bottomHitbox.setLocation(posX, gapY + gapSize/2);

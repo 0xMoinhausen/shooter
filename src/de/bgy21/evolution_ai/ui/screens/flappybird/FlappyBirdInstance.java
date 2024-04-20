@@ -31,6 +31,7 @@ public class FlappyBirdInstance {
             int pipesAmount,
             Random random
     ){
+        pipesAmount = Math.min(2, pipesAmount); //Max 2 Pipes
         this.container = container;
         this.graphics = container.getGraphics();
         this.birds = new ArrayList<>();
@@ -43,7 +44,7 @@ public class FlappyBirdInstance {
         }
         this.pipes = new Pipes[pipesAmount];
         for (int i = 0; i < pipesAmount; i++) {
-            this.pipes[i] = new Pipes();
+            this.pipes[i] = new Pipes(i * 500);
             System.out.println("Created Pipe!");
         }
     }
