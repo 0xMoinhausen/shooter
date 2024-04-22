@@ -10,5 +10,6 @@
     <orderEntry type="library" exported="" name="ibxm" level="project" />
     <orderEntry type="library" name="linux" level="project" />
     <orderEntry type="library" name="knowm.xchart" level="project" />
+    <orderEntry type="library" name="io.github.kostaskougios.cloning" level="project" />
   </component>
 </module>

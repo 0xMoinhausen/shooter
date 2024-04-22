@@ -1,5 +1,6 @@
 package de.bgy21.evolution_ai.neuralnetwork;
 
+import com.rits.cloning.Cloner;
 import de.bgy21.evolution_ai.activation_functions.ActivationFunction;
 import de.bgy21.evolution_ai.neuralnetwork.layer.HiddenLayer;
 import de.bgy21.evolution_ai.neuralnetwork.layer.InputLayer;
@@ -63,7 +64,8 @@ public class NeuralNetwork implements Cloneable {
     }
 
     public NeuralNetwork clone(double mutateRate, Random random) throws CloneNotSupportedException {
-        NeuralNetwork neuralNetwork = (NeuralNetwork) this.clone();
+        Cloner cloner = new Cloner();
+        NeuralNetwork neuralNetwork = cloner.deepClone(this);
 
         for (HiddenLayer layer: neuralNetwork.hiddenLayers) {
             for (int i = 0; i < layer.size(); i++) {
