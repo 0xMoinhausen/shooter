@@ -27,7 +27,7 @@ public class RedBall {
 
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics){
         graphics.rotate(posX, posY, rotation);
-        graphics.scale();
+        //graphics.scale(1);
         graphics.drawImage(redBallSprite, posX, posY);
         graphics.rotate(posX, posY, -rotation);
     }

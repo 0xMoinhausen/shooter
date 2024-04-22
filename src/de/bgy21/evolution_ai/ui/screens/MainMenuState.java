@@ -3,7 +3,6 @@ package de.bgy21.evolution_ai.ui.screens;
 import de.bgy21.evolution_ai.ui.badwidgets.Button;
 import de.bgy21.evolution_ai.ui.screens.flappybird.FlappyBirdInstance;
 import de.bgy21.evolution_ai.ui.screens.flappybird.GameScreen;
-import de.bgy21.evolution_ai.ui.screens.rotating_balls.RotateBallsState;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -45,7 +44,7 @@ public class MainMenuState extends BasicGameState {
                 new Rectangle(100, 300, 400, 90),
                 Color.green,
                 "Rotating balls",
-                () -> game.enterState(RotateBallsState.ID),
+                () -> System.out.println("h"),
                 container.getInput()
         );
     }
