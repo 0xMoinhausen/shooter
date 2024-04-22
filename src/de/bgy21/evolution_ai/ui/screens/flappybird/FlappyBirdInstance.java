@@ -36,8 +36,8 @@ public class FlappyBirdInstance {
         this.graphics = container.getGraphics();
         this.birds = new ArrayList<>();
         for (int i = 0; i < birdAmount; i++) {
-            NeuralNetwork neuralNetwork = new NeuralNetwork(new InputLayer(1));
-            neuralNetwork.add_hidden_layer(3, NeuralNetwork.randomWeights( 3, random), new TanH());
+            NeuralNetwork neuralNetwork = new NeuralNetwork(new InputLayer(2));
+            neuralNetwork.add_hidden_layer(3, NeuralNetwork.randomWeights( 6, random), new TanH());
             neuralNetwork.add_hidden_layer(1, NeuralNetwork.randomWeights( 3, random), new Sigmoid());
             birds.add(new BirdCharacter(neuralNetwork));
             System.out.println("Created Bird!");
@@ -75,7 +75,7 @@ public class FlappyBirdInstance {
                 System.out.println(this.birds.get(0));
             }
             BirdCharacter bird = this.birds.get(i);
-            bird.update(delta, container);
+            bird.update(delta, container, pipes[0].gapY);
             if (bird.posY < 0 || bird.posY > container.getHeight()) {
                 bird.killBird(container.getInput());
                 this.deathBirds.add(bird);

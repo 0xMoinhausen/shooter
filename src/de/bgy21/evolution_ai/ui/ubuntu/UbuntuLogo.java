@@ -30,7 +30,7 @@ public class UbuntuLogo {
     }
 
     public void update(int delta, GameContainer container) {
-        position.add(speed.scale(0.5));
+        position.add(speed.scale(1));
         texture.rotate( 1 );
     }
 

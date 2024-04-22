@@ -46,11 +46,12 @@ public class BirdCharacter {
         graphics.rotate(posX + birdSprite.getWidth() / 2, posY + birdSprite.getHeight() / 2, -speedY * 2);
     }
 
-    public void update(float delta, GameContainer container){
+    public void update(float delta, GameContainer container, int gapY){
         speedY += gravity * delta;
         posY += speedY;
         birdHitbox.setLocation(posX, posY);
         neuralNetwork.inputLayer.getNeuron(0).setValue((double) posY / 2);
+        neuralNetwork.inputLayer.getNeuron(1).setValue(gapY);
         if (neuralNetwork.lastLayer().getNeuron(0).getValue() >= 0.5) {
             jump();
         }

@@ -20,7 +20,8 @@ public class Pipes {
         }
     }
 
-    private int posX, gapY, gapSize;
+    private int posX, gapSize;
+    public int gapY;
     private float speedX, pipeMoveSpeed;
     private Shape bottomHitbox, topHitbox;
 
