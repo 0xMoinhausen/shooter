@@ -19,6 +19,7 @@ import java.util.Random;
 public class FlappyBirdInstance {
     private final GameContainer container;
     private final Graphics graphics;
+    public BirdCharacter lastBird = null;
 
     public ArrayList<BirdCharacter> birds;
     private final Pipes[] pipes;
@@ -69,12 +70,16 @@ public class FlappyBirdInstance {
 
     public void update(int delta) {
         for (int i = 0; i < this.birds.size(); i++) {
+            if (this.birds.size() <= 1) {
+                System.out.println(this.birds.get(0));
+            }
             BirdCharacter bird = this.birds.get(i);
             bird.update(delta, container);
             if (bird.posY < 0 || bird.posY > container.getHeight()) {
                 bird.killBird(container.getInput());
                 this.deathBirds.add(bird);
                 this.birds.remove(i);
+                i -= 1;
                 continue;
             }
             for (Pipes pipe : pipes) {
@@ -82,6 +87,7 @@ public class FlappyBirdInstance {
                     bird.killBird(container.getInput());
                     this.deathBirds.add(bird);
                     this.birds.remove(i);
+                    i -= 1;
                 }
             }
         }

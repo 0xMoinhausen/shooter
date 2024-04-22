@@ -2,6 +2,7 @@ package de.bgy21.evolution_ai.ui.screens.flappybird;
 
 import de.bgy21.evolution_ai.ui.world.Block;
 import de.bgy21.evolution_ai.ui.world.Grid;
+import org.lwjgl.Sys;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -17,7 +18,7 @@ public class GameScreen extends BasicGameState {
     public static float speedMult = 1;
     public static int ID = 4;
     private FlappyBirdInstance flappyBirdGame;
-    private Random random = new Random(65);
+    private Random random = new Random(0);
     private int generation = 1;
 
     @Override
@@ -28,7 +29,7 @@ public class GameScreen extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         // Bird amount muss mal 0.8 und mal 0.2 eine gerade zahl rauskommen weil ich nicht coden kann
-        flappyBirdGame = new FlappyBirdInstance(container,400, 1, random);
+        flappyBirdGame = new FlappyBirdInstance(container,10000, 1, random);
     }
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -50,6 +51,7 @@ public class GameScreen extends BasicGameState {
         if (flappyBirdGame.birds.isEmpty()) {
             ArrayList<BirdCharacter> deathBirds = this.flappyBirdGame.deathBirds;
             ArrayList<BirdCharacter> birds = new ArrayList<>(deathBirds.size());
+            System.out.println(deathBirds.get(deathBirds.size() - 1));
             for (int j = 0; j < 5; j++) {
                 for (int i = (int) (deathBirds.size() * 0.8) ; i < deathBirds.size(); i++) {
                     System.out.println(i);

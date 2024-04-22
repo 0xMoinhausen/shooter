@@ -54,7 +54,7 @@ public class BirdCharacter {
         if (neuralNetwork.lastLayer().getNeuron(0).getValue() >= 0.5) {
             jump();
         }
-        System.out.println(neuralNetwork.lastLayer().getNeuron(0).getValue());
+        //System.out.println(neuralNetwork.lastLayer().getNeuron(0).getValue());
     }
 
     public void jump(){

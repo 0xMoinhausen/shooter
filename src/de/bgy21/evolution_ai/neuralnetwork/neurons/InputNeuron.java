@@ -22,7 +22,7 @@ public class InputNeuron implements Neuron {
 
     @Override
     public InputNeuron copy() {
-        return new InputNeuron(value);
+        return new InputNeuron();
     }
 
 }

@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class NeuralNetwork implements Cloneable {
     public InputLayer inputLayer;
-    private ArrayList<HiddenLayer> hiddenLayers;
+    private final ArrayList<HiddenLayer> hiddenLayers;
 
     public NeuralNetwork(InputLayer inputLayer) {
         this.inputLayer = inputLayer;
@@ -63,12 +63,12 @@ public class NeuralNetwork implements Cloneable {
     }
 
     public NeuralNetwork clone(double mutateRate, Random random) throws CloneNotSupportedException {
-        NeuralNetwork neuralNetwork = this.copy();
+        NeuralNetwork neuralNetwork = (NeuralNetwork) this.clone();
 
         for (HiddenLayer layer: neuralNetwork.hiddenLayers) {
             for (int i = 0; i < layer.size(); i++) {
                 for (Connection connection: layer.getNeuron(i).getConnections()) {
-                    if (random.nextDouble() <= mutateRate ) {
+                    if (random.nextDouble() < mutateRate ) {
                         connection.setWeight(connection.getWeight() + (random.nextDouble() - 0.5) * 0.10);
                     }
                 }
