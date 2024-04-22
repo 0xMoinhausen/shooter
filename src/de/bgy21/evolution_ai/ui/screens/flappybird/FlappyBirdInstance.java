@@ -19,7 +19,6 @@ import java.util.Random;
 public class FlappyBirdInstance {
     private final GameContainer container;
     private final Graphics graphics;
-    public BirdCharacter lastBird = null;
 
     public ArrayList<BirdCharacter> birds;
     private final Pipes[] pipes;

@@ -28,7 +28,7 @@ public class Pipes {
     public Pipes(int posXOffset){
         this.posX = 500 + posXOffset;
         gapY = random.nextInt(Display.getHeight() - gapSize) + gapSize / 2;
-        gapSize = 170;
+        gapSize = 100;
         speedX = 10f;
         pipeMoveSpeed = 0.09f;
         topHitbox = new Rectangle(posX, gapY - gapSize/2, pipeSprite.getWidth(), -pipeSprite.getHeight());
