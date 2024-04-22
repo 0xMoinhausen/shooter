@@ -3,6 +3,7 @@ package de.bgy21.evolution_ai.ui.screens;
 import de.bgy21.evolution_ai.ui.badwidgets.Button;
 import de.bgy21.evolution_ai.ui.screens.flappybird.FlappyBirdInstance;
 import de.bgy21.evolution_ai.ui.screens.flappybird.GameScreen;
+import de.bgy21.evolution_ai.ui.screens.rotating_balls.RotateBallsState;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -15,7 +16,7 @@ public class MainMenuState extends BasicGameState {
 
     Button<Rectangle> ballStateButton;
     Button<Rectangle> flappyBirdButton;
-
+    Button<Rectangle> rotateBallButton;
     @Override
     public int getID() {
         return 2;
@@ -39,6 +40,14 @@ public class MainMenuState extends BasicGameState {
                 () -> game.enterState(GameScreen.ID),
                 container.getInput()
         );
+
+        rotateBallButton = new Button<Rectangle>(
+                new Rectangle(100, 300, 400, 90),
+                Color.green,
+                "Rotating balls",
+                () -> game.enterState(RotateBallsState.ID),
+                container.getInput()
+        );
     }
 
     @Override
@@ -50,6 +59,7 @@ public class MainMenuState extends BasicGameState {
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         ballStateButton.render(gameContainer, graphics);
         flappyBirdButton.render(gameContainer, graphics);
+        rotateBallButton.render(gameContainer, graphics);
     }
 
     @Override

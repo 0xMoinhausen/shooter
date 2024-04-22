@@ -105,16 +105,16 @@ public class BallState extends BasicGameState {
             System.out.println(i);
             switch(i){
                 case Input.KEY_UP:
-                    movementInput.y = -1;
+                    movementInput.y += -1;
                     break;
                 case  Input.KEY_DOWN:
-                    movementInput.y = 1;
+                    movementInput.y += 1;
                     break;
                 case Input.KEY_RIGHT:
-                    movementInput.x = 1;
+                    movementInput.x += 1;
                     break;
                 case Input.KEY_LEFT:
-                    movementInput.x = -1;
+                    movementInput.x += -1;
             }
         }
 
@@ -125,16 +125,16 @@ public class BallState extends BasicGameState {
             System.out.println(i);
             switch(i){
                 case Input.KEY_UP:
-                    movementInput.y = 0;
+                    movementInput.y += 1;
                     break;
                 case  Input.KEY_DOWN:
-                    movementInput.y = 0;
+                    movementInput.y -= 1;
                     break;
                 case Input.KEY_RIGHT:
-                    movementInput.x = 0;
+                    movementInput.x -= 1;
                     break;
                 case Input.KEY_LEFT:
-                    movementInput.x = 0;
+                    movementInput.x += 1;
             }
         }
 

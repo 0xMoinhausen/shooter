@@ -3,6 +3,7 @@ import de.bgy21.evolution_ai.ui.screens.BallState;
 import de.bgy21.evolution_ai.ui.screens.GameState;
 import de.bgy21.evolution_ai.ui.screens.MainMenuState;
 import de.bgy21.evolution_ai.ui.screens.flappybird.GameScreen;
+import de.bgy21.evolution_ai.ui.screens.rotating_balls.RotateBallsState;
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -23,6 +24,7 @@ public class Game extends StateBasedGame {
         this.addState(new BallState());
         this.addState(new GameState());
         this.addState(new GameScreen());
+        this.addState(new RotateBallsState());
     }
 
 

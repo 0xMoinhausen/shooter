@@ -54,7 +54,7 @@ public class FlappyBirdInstance {
         this.graphics = container.getGraphics();
         this.pipes = new Pipes[pipesAmount];
         for (int i = 0; i < pipesAmount; i++) {
-            this.pipes[i] = new Pipes();
+            this.pipes[i] = new Pipes(400 + i*200);
             System.out.println("Created Pipe!");
         }
         this.birds = birds;
