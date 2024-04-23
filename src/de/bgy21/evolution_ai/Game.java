@@ -14,7 +14,6 @@ public class Game extends StateBasedGame {
     public Game() {
         super("EvolutionAi");
         Display.setResizable(true);
-        Display.setVSyncEnabled(true);
     }
 
 

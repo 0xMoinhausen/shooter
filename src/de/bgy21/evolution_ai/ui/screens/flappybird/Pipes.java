@@ -1,6 +1,7 @@
 package de.bgy21.evolution_ai.ui.screens.flappybird;
 
 import org.lwjgl.opengl.Display;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -28,11 +29,11 @@ public class Pipes {
     public Pipes(int posXOffset){
         this.posX = 500 + posXOffset;
         gapY = random.nextInt(Display.getHeight() - gapSize) + gapSize / 2;
-        gapSize = 100;
-        speedX = 10f;
-        pipeMoveSpeed = 0.09f;
-        topHitbox = new Rectangle(posX, gapY - gapSize/2, pipeSprite.getWidth(), -pipeSprite.getHeight());
-        bottomHitbox = new Rectangle(posX, gapY + gapSize/2, pipeSprite.getWidth(), pipeSprite.getHeight());
+        gapSize = 200;
+        speedX = 20f;
+        pipeMoveSpeed = 0.20f;
+        topHitbox = new Rectangle(posX, gapY - gapSize/2, pipeSprite.getWidth(), -pipeSprite.getHeight() * 10);
+        bottomHitbox = new Rectangle(posX, gapY + gapSize/2, pipeSprite.getWidth(), pipeSprite.getHeight() * 10);
     }
 
     public void render(Graphics graphics){
@@ -45,12 +46,12 @@ public class Pipes {
         graphics.rotate(posX + pipeSprite.getWidth() / 2, gapY, -180);
     }
 
-    public void update(float delta){
+    public void update(float delta, GameContainer container){
         speedX = pipeMoveSpeed * delta;
         posX -= speedX;
         if(posX <= 0){
             posX = Display.getWidth();
-            gapY = random.nextInt(Display.getHeight() - gapSize) + gapSize / 2;
+            gapY = random.nextInt((int)(container.getHeight() *0.8 - gapSize)) + gapSize / 2;
         }
         topHitbox.setLocation(posX, gapY - gapSize/2);
         bottomHitbox.setLocation(posX, gapY + gapSize/2);

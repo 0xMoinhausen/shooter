@@ -7,6 +7,8 @@ import de.bgy21.evolution_ai.activation_functions.TanH;
 import de.bgy21.evolution_ai.neuralnetwork.NeuralNetwork;
 import de.bgy21.evolution_ai.neuralnetwork.layer.InputLayer;
 import org.lwjgl.Sys;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class FlappyBirdInstance {
+    static float scaleMult = 1.5f;
     private final GameContainer container;
     private final Graphics graphics;
 
@@ -60,6 +63,11 @@ public class FlappyBirdInstance {
     }
 
     public void render(){
+
+        graphics.scale((Display.getWidth() + 0.0f)  / container.getWidth() * scaleMult,  (Display.getHeight() + 0.0f) / container.getHeight() * scaleMult);
+
+        graphics.translate( 1, 1);
+        System.out.println(Display.getWidth() / container.getWidth());
         for (BirdCharacter bird : this.birds) {
             bird.render(graphics);
         }
@@ -92,7 +100,7 @@ public class FlappyBirdInstance {
             }
         }
         for (Pipes pipe : pipes) {
-           pipe.update(delta);
+           pipe.update(delta, container);
         }
     }
 }

@@ -9,11 +9,12 @@ import org.newdawn.slick.SlickException;
 public class Main {
     public static void main(String[] args) throws SlickException {
 
-        ScalableGame s = new ScalableGame(new Game(), 1920, 1080, false);
+        ScalableGame s = new ScalableGame(new Game(), 1920, 1080, true);
 
         AppGameContainer screen  = new AppGameContainer(s);
-        screen.setDisplayMode(screen.getScreenWidth()-100 , (screen.getScreenHeight() -100), false);
+        screen.setDisplayMode((int)(screen.getScreenWidth() * 0.9f) , (int)(screen.getScreenHeight() *0.9), false);
         screen.start();
+
 
 
 

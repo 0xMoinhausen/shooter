@@ -14,7 +14,7 @@ public class BirdCharacter {
     static Image birdSprite;
 
     static float gravity = 0.02f;
-    static float jumpForce = 7.5f;
+    static float jumpForce = 5.5f;
     static {
         try {
             birdSprite = new Image("assets/flappybird/sprites/bluebird-midflap.png").getScaledCopy(1.5f);

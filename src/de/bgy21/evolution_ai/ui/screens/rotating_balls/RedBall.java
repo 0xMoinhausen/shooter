@@ -5,9 +5,13 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.util.Random;
+
 public class RedBall {
+    static Random random = new Random();
     private Image redBallSprite;
     private final int redballSizeX, redBallSizeY;
+    private float scale;
     private float rotation;
     private float posX, posY;
     private float speedX, speedY, rotationSpeed;
@@ -19,6 +23,8 @@ public class RedBall {
         this.posX = posX;
         this.posY = posY;
 
+        scale = random.nextFloat() + 0.5f;
+
         redballSizeX = redBallSprite.getWidth();
         redBallSizeY = redBallSprite.getHeight();
 
@@ -26,10 +32,11 @@ public class RedBall {
     }
 
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics){
-        graphics.rotate(posX, posY, rotation);
-        //graphics.scale(1);
+        graphics.scale(scale , scale);
+        graphics.rotate(posX + redballSizeX/2.0f, posY + redBallSizeY/2.0f, rotation);
         graphics.drawImage(redBallSprite, posX, posY);
-        graphics.rotate(posX, posY, -rotation);
+        graphics.scale(1 , 1);
+        graphics.rotate(posX + redballSizeX/2.0f, posY + redBallSizeY/2.0f, -rotation);
     }
 
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta){
@@ -37,5 +44,11 @@ public class RedBall {
         posY += speedY * delta;
 
         rotation += rotationSpeed * delta;
+
+        if(posY - redBallSizeY > gameContainer.getHeight()){
+            posY = 0 - redBallSizeY;
+            posX = random.nextInt(gameContainer.getWidth());
+            scale = random.nextFloat() + 0.5f;
+        }
     }
 }

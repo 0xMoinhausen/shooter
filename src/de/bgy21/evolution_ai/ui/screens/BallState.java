@@ -15,7 +15,7 @@ public class BallState extends BasicGameState {
     public ArrayList<Shape> balls = new ArrayList<>();
     public Shape player;
     private int playerSize = 10;
-    protected float movementSpeed = 1f;
+    protected float movementSpeed = 3f;
     protected float accelaration = 1f * 10;
     float fallSpeed = -0.25f;
     Random random = new Random(404);
